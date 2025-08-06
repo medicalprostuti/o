@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chapter Dropdown Menu</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"
+    />
+    <style>
+      body {
+        font-family: "Hind Siliguri", sans-serif;
+        background-color: #f4f7f6;
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+        color: #333;
+      }
+
+      .subject-container {
+        width: 90%;
+        max-width: 600px; /* Increased width slightly */
+        background: #ffffff;
+        padding: 25px 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 25px;
+      }
+
+      /* --- Dropdown Styling --- */
+      .dropdown {
+        position: relative;
+        margin-bottom: 12px;
+      }
+
+      .dropdown-btn {
+        background: #1b0b58;
+        color: white;
+        padding: 15px 20px;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        width: 100%;
+        text-align: left;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+      }
+
+      .dropdown-btn:hover {
+        background-color: #2a1a7a;
+      }
+
+      .dropdown-btn:active {
+        transform: scale(0.99); /* Slight press effect */
+      }
+
+      /* Arrow Icon using a pseudo-element */
+      .dropdown-btn::after {
+        content: "▶";
+        font-size: 12px;
+        transform: rotate(0deg);
+        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bouncy effect */
+      }
+
+      /* Rotate arrow when dropdown is active/open */
+      .dropdown-btn.active::after {
+        transform: rotate(90deg);
+      }
+
+      /* --- Dropdown Content & Animation --- */
+      .dropdown-content {
+        background-color: #f9f9f9;
+        /* Hide content by default */
+        max-height: 0;
+        overflow: hidden;
+        margin-top: 5px;
+        border-radius: 10px;
+        box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.05);
+        /* Smooth transition for the slide-down effect */
+        transition: max-height 0.8s ease-in-out; /* Slightly slower for longer lists */
+      }
+
+      /* Class added by JavaScript to show the content */
+      .dropdown-content.show {
+        /* Increased max-height to accommodate 60+ topics.
+       This value should be larger than the height of your longest topic list. */
+        max-height: 2000px;
+      }
+
+      /* Links inside the dropdown */
+      .dropdown-content a {
+        color: #555;
+        padding: 14px 25px;
+        text-decoration: none;
+        display: block;
+        transition: background-color 0.2s ease, padding-left 0.2s ease;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .dropdown-content a:last-child {
+        border-bottom: none;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #e9ecef;
+        padding-left: 30px;
+        color: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="subject-container" id="subject-menu">
+      <h1>কেমিস্ট্রি ২য়📖</h1>
+      <!-- The dropdown menu will be dynamically generated here -->
+    </div>
+
+    <script>
+      const chaptersData = [
+        {
+          id: "ch1",
+          title: "অধ্যায়-১: পরিবেশ রসায়ন",
+          topics: [
+            {
+              title: "১.১ - বায়ুমন্ডলের গঠণ, ঘুর্নিঝড় ও জ্বলোচ্ছাস",
+              url: "https://medicalprostuti.github.io/o1/",
+            },
+            {
+              title: "১.২ - গ্যাস",
+              url: "https://medicalprostuti.github.io/o2/",
+            },
+            {
+              title: "১.৩ - গ্যাসীয় সূত্র সমূহ",
+              url: "https://medicalprostuti.github.io/o3/",
+            },
+            {
+              title: "১.৪ -গ্যাসের গতিতত্ত্ব",
+              url: "https://medicalprostuti.github.io/o4/",
+            },
+            {
+              title: "১.৫ - আদর্শ গ্যাস ও বাস্তব গ্যাস",
+              url: "https://medicalprostuti.github.io/o5/",
+            },
+            {
+              title: "১.৬ - গ্যাস সিলিন্ডারকরণ ও তরলীকরণ",
+              url: "https://medicalprostuti.github.io/o6/",
+            },
+            {
+              title: "১.৭ - নাইট্রোজেন ফিক্সেসন",
+              url: "https://medicalprostuti.github.io/o7/",
+            },
+            {
+              title: "১.৮ - বায়ু দূষণ",
+              url: "https://medicalprostuti.github.io/o8/",
+            },
+            {
+              title: "১.৯ - এসিড বৃষ্টি ও প্রতিকার",
+              url: "https://medicalprostuti.github.io/o9/",
+            },
+            {
+              title: "১.১০ - এসিড ক্ষার মতবাদ",
+              url: "https://medicalprostuti.github.io/o10/",
+            },
+            {
+              title: "১.১১ - পানি ও পানি দূষণ",
+              url: "https://medicalprostuti.github.io/o11/",
+            },
+            {
+              title: "১.১২ - আর্সেনিক দূষণ",
+              url: "https://medicalprostuti.github.io/o12/",
+            },
+            {
+              title: "১.১৩ - ভারী ধাতু দূষণ",
+              url: "https://medicalprostuti.github.io/o13/",
+            },
+            {
+              title: "১.১৪ - দ্রবণ",
+              url: "https://medicalprostuti.github.io/o14/",
+            },
+            {
+              title: "১.১৫ - গাণিতিক সমস্যা",
+              url: "https://medicalprostuti.github.io/o15/",
+            },
+          ],
+        },
+        {
+          id: "ch2",
+          title: "অধ্যায়-২: জৈব যৌগ",
+          topics: [
+            {
+              title: "২.১ - ভুমিকা ও কার্বনের বিশিষ্টতা",
+              url: "https://medicalprostuti.github.io/o16/",
+            },
+            {
+              title: "২.২ - জৈব যৌগের শ্রেণী বিন্যাস",
+              url: "https://medicalprostuti.github.io/o17/",
+            },
+            {
+              title: "২.৩ - জৈব যৌগের বন্ধন প্রকৃতি",
+              url: "https://medicalprostuti.github.io/o18/",
+            },
+            {
+              title: "২.৪ - সমগোত্রীয় শ্রেণী ও কার্যকরী মূলক",
+              url: "https://medicalprostuti.github.io/o19/",
+            },
+            {
+              title: "২.৫ - সমানুতা",
+              url: "https://medicalprostuti.github.io/o20/",
+            },
+            {
+              title: "২.৬ - অ্যারোম্যাটিক জৈব যৌগ",
+              url: "https://medicalprostuti.github.io/o21/",
+            },
+            {
+              title: "২.৭ - বেনজিন ও টলুইন",
+              url: "https://medicalprostuti.github.io/o22/",
+            },
+            {
+              title: "২.৮ - জৈব যৌগের বিক্রিয়া কৌশল",
+              url: "https://medicalprostuti.github.io/o23/",
+            },
+            {
+              title: "২.৯ - অ্যালকেন",
+              url: "https://medicalprostuti.github.io/o24/",
+            },
+            {
+              title: "২.১০ - অ্যালকিন",
+              url: "https://medicalprostuti.github.io/o25/",
+            },
+            {
+              title: "২.১১ - অ্যালকাইন",
+              url: "https://medicalprostuti.github.io/o26/",
+            },
+            {
+              title: "২.১২ - অ্যালকাইল হ্যালাইড",
+              url: "https://medicalprostuti.github.io/o27/",
+            },
+            {
+              title: "২.১৩ - গ্রিগনার্ড বিকারক",
+              url: "https://medicalprostuti.github.io/o28/",
+            },
+            {
+              title: "২.১৪ - অ্যালকোহল",
+              url: "https://medicalprostuti.github.io/o29/",
+            },
+            {
+              title: "২.১৫ - ইথার",
+              url: "https://medicalprostuti.github.io/o30/",
+            },
+            {
+              title: "২.১৬ - অ্যামিন ও ডায়াজোনিয়াম লবন",
+              url: "https://medicalprostuti.github.io/o31/",
+            },
+            {
+              title: "২.১৭ - অ্যালডিহাইড ও কিটোন",
+              url: "https://medicalprostuti.github.io/o32/",
+            },
+            {
+              title: "২.১৮ - অ্যালকাইন",
+              url: "https://medicalprostuti.github.io/o33/",
+            },
+            {
+              title: "২.১৯ - কার্বক্সিলিক এসিড",
+              url: "https://medicalprostuti.github.io/o34/",
+            },
+            {
+              title: "২.২০ - এস্টার",
+              url: "https://medicalprostuti.github.io/o35/",
+            },
+            {
+              title: "২.২১ - ফেনল",
+              url: "https://medicalprostuti.github.io/o36/",
+            },
+            {
+              title: "২.২২ - গ্লিসারিন",
+              url: "https://medicalprostuti.github.io/o37/",
+            },
+            {
+              title: "২.২৩ - ডেটল ও প্যারাসিটামল",
+              url: "https://medicalprostuti.github.io/o38/",
+            },
+            {
+              title: "২.২৪ - জৈব যৌগের বিশুদ্ধতা নির্নয়",
+              url: "https://medicalprostuti.github.io/o39/",
+            },
+            {
+              title: "২.২৫ - পলিমার ও প্লাস্টিসিটি",
+              url: "https://medicalprostuti.github.io/o40/",
+            },
+            {
+              title: "২.২৬ - পলিস্যাকারাইড",
+              url: "https://medicalprostuti.github.io/o41/",
+            },
+            {
+              title: "২.২৭ - অ্যামিনো এসিড, পলিপেপটাইড ও জৈব যৌগের গুরুত্ব",
+              url: "https://medicalprostuti.github.io/o42/",
+            },
+          ],
+        },
+        {
+          id: "ch3",
+          title: "অধ্যায়-৩: পরিমাণগত রসায়ন",
+          topics: [
+            {
+              title: "৩.১ - রাসায়নিক গণনা ও গ্যাসের মোলার আয়তন",
+              url: "https://medicalprostuti.github.io/o43/",
+            },
+            {
+              title: "৩.২ - প্রাইমারি ও সেকেন্ডারি স্ট্যান্ডার্ড পদার্থ",
+              url: "https://medicalprostuti.github.io/o44/",
+            },
+            {
+              title: "৩.৩ - টাইট্রেশন ও নির্দেশক",
+              url: "https://medicalprostuti.github.io/o45/",
+            },
+            {
+              title: "৩.৪ - জারন বিজারন বিক্রিয়া",
+              url: "https://medicalprostuti.github.io/o46/",
+            },
+            {
+              title: "৩.৫ - দ্রবণের ঘনমাত্রা নির্নয়ে বিয়ার্ট লিবার্টের সূত্র",
+              url: "https://medicalprostuti.github.io/o47/",
+            },
+            {
+              title: "৩.৬ - ক্রোমাটোগ্রাফি",
+              url: "https://medicalprostuti.github.io/o48/",
+            },
+            {
+              title: "৩.৭ -গাণিতিক সমস্যা",
+              url: "https://medicalprostuti.github.io/o49/",
+            },
+          ],
+        },
+
+        {
+          id: "ch4",
+          title: "অধ্যায়-৪: তড়িৎ রসায়ন",
+          topics: [
+            {
+              title: "৪.১ -তড়িৎ পরিবাহী ও এর প্রকারভেদ",
+              url: "https://medicalprostuti.github.io/o50/",
+            },
+            {
+              title: "৪.২ - তড়িৎ বিশ্লেষণ ও তড়িৎ বিশ্লেষ্যের পরিবাহিতা",
+              url: "https://medicalprostuti.github.io/o51/",
+            },
+            {
+              title: "৪.৩ - ফ্যারাডের তড়িৎ বিশ্লেষণ সূত্র",
+              url: "https://medicalprostuti.github.io/o52/",
+            },
+            {
+              title: "৪.৪ - ধাতুর সক্রীয়তা সিরিজ ও তড়িৎ রাসায়নিক সিরিজ",
+              url: "https://medicalprostuti.github.io/o53/",
+            },
+            {
+              title:
+                "৪.৫ - তড়িৎদ্বার বিভব, কোষ বিভব ও জারন-বিজারন অর্ধবিক্রিয়া",
+              url: "https://medicalprostuti.github.io/o54/",
+            },
+            {
+              title: "৪.৬ - তড়িৎদ্বার ও অর্ধকোষ",
+              url: "https://medicalprostuti.github.io/o55/",
+            },
+
+            {
+              title: "৪.৭ - তড়িৎ কোষ",
+              url: "https://medicalprostuti.github.io/o56/",
+            },
+            {
+              title: "৪.৮ - রিচার্জেবল ব্যাটারি",
+              url: "https://medicalprostuti.github.io/o57/",
+            },
+            {
+              title: "৪.৯ - ফুয়েল সেল ও এর প্রকারভেদ",
+              url: "https://medicalprostuti.github.io/o58/",
+            },
+            {
+              title: "৪.১০ - গানিতিক সমস্যা",
+              url: "https://medicalprostuti.github.io/o59/",
+            },
+          ],
+        },
+
+        {
+          id: "ch5",
+          title: "অধ্যায়-৫: অর্থনৈতিক রসায়ন",
+          topics: [
+            {
+              title: "৫.১ - জ্বালানি সম্পদ ও প্রকারভেদ",
+              url: "https://medicalprostuti.github.io/o60/",
+            },
+            {
+              title: "৫.২ - বাংলাদেশের প্রাকৃতিক গ্যাস",
+              url: "https://medicalprostuti.github.io/o61/",
+            },
+            {
+              title: "৫.৩ - বাংলাদেশের কয়লা শিল্প",
+              url: "https://medicalprostuti.github.io/o62/",
+            },
+            {
+              title: "৫.৪ -ইউরিয়া সার উৎপাদনের মূলনীতি",
+              url: "https://medicalprostuti.github.io/o63/",
+            },
+            {
+              title: "৫.৫ - কাচ উৎপাদনের মূলনীতি",
+              url: "https://medicalprostuti.github.io/o64/",
+            },
+            {
+              title: "৫.৬ - সিরামিক উৎপাদনের মূলনীতি",
+              url: "https://medicalprostuti.github.io/o65/",
+            },
+            {
+              title: "৫.৭ - কাগজ উৎপাদনের মূলনীতি",
+              url: "https://medicalprostuti.github.io/o66/",
+            },
+            {
+              title: "৫.৮ -সিমেন্ট শিল্প",
+              url: "https://medicalprostuti.github.io/o67/",
+            },
+            {
+              title: "৫.৯ - চামড়া টেনিং এর মূলনীতি",
+              url: "https://medicalprostuti.github.io/o68/",
+            },
+            {
+              title: "৫.১০ - শিল্পের বর্জ্যদূষক সমূহ",
+              url: "https://medicalprostuti.github.io/o69/",
+            },
+            {
+              title: "৫.১১ - বর্জ্য রিসাইকেল",
+              url: "https://medicalprostuti.github.io/o70/",
+            },
+            {
+              title: "৫.১২ - ন্যানো পার্টিকেল ও ন্যানো প্রযুক্তি",
+              url: "https://medicalprostuti.github.io/o71/",
+            },
+          ],
+        },
+
+        // Add more chapters as needed
+      ];
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuContainer = document.getElementById("subject-menu");
+
+        // --- 1. Function to Generate the Menu ---
+        function generateMenu() {
+          // Loop through each chapter in the data object
+          chaptersData.forEach((chapter) => {
+            // Create the main container for the dropdown
+            const dropdownDiv = document.createElement("div");
+            dropdownDiv.className = "dropdown";
+
+            // Create the button for the chapter
+            const button = document.createElement("button");
+            button.className = "dropdown-btn";
+            button.textContent = chapter.title;
+
+            // Create the container for the topics
+            const contentDiv = document.createElement("div");
+            contentDiv.className = "dropdown-content";
+
+            // Loop through the topics for the current chapter
+            chapter.topics.forEach((topic) => {
+              const link = document.createElement("a");
+              link.textContent = topic.title;
+              link.href = topic.url;
+              contentDiv.appendChild(link);
+            });
+
+            // Assemble the parts
+            dropdownDiv.appendChild(button);
+            dropdownDiv.appendChild(contentDiv);
+
+            // Add the completed dropdown to the main container
+            menuContainer.appendChild(dropdownDiv);
+          });
+        }
+
+        // --- 2. Function to Add Event Listeners ---
+        function attachEventListeners() {
+          const allDropdownBtns =
+            menuContainer.querySelectorAll(".dropdown-btn");
+
+          allDropdownBtns.forEach((btn) => {
+            btn.addEventListener("click", function (event) {
+              const currentContent = this.nextElementSibling;
+              const isAlreadyOpen = this.classList.contains("active");
+
+              // First, close all other dropdowns
+              allDropdownBtns.forEach((otherBtn) => {
+                if (otherBtn !== this) {
+                  // Don't close the one we are interacting with yet
+                  otherBtn.classList.remove("active");
+                  otherBtn.nextElementSibling.classList.remove("show");
+                }
+              });
+
+              // Toggle the clicked dropdown
+              this.classList.toggle("active");
+              currentContent.classList.toggle("show");
+
+              event.stopPropagation();
+            });
+          });
+
+          // Optional: Close dropdowns if clicking outside
+          window.addEventListener("click", function (event) {
+            // Check if the click was outside of any dropdown button
+            if (!event.target.matches(".dropdown-btn")) {
+              allDropdownBtns.forEach((btn) => {
+                btn.classList.remove("active");
+                btn.nextElementSibling.classList.remove("show");
+              });
+            }
+          });
+        }
+
+        // --- 3. Initialize the Menu ---
+        generateMenu();
+        attachEventListeners();
+      });
+    </script>
+  </body>
+</html>
