@@ -20,7 +20,7 @@
 
       .subject-container {
         width: 90%;
-        max-width: 600px; /* Increased width slightly */
+        max-width: 600px;
         background: #ffffff;
         padding: 25px 30px;
         border-radius: 15px;
@@ -55,6 +55,7 @@
         justify-content: space-between;
         align-items: center;
         box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        font-family: "Hind Siliguri", sans-serif;
       }
 
       .dropdown-btn:hover {
@@ -62,7 +63,7 @@
       }
 
       .dropdown-btn:active {
-        transform: scale(0.99); /* Slight press effect */
+        transform: scale(0.99);
       }
 
       /* Arrow Icon using a pseudo-element */
@@ -70,7 +71,7 @@
         content: "▶";
         font-size: 12px;
         transform: rotate(0deg);
-        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bouncy effect */
+        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
       }
 
       /* Rotate arrow when dropdown is active/open */
@@ -81,20 +82,15 @@
       /* --- Dropdown Content & Animation --- */
       .dropdown-content {
         background-color: #f9f9f9;
-        /* Hide content by default */
         max-height: 0;
         overflow: hidden;
         margin-top: 5px;
         border-radius: 10px;
         box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.05);
-        /* Smooth transition for the slide-down effect */
-        transition: max-height 0.8s ease-in-out; /* Slightly slower for longer lists */
+        transition: max-height 0.8s ease-in-out;
       }
 
-      /* Class added by JavaScript to show the content */
       .dropdown-content.show {
-        /* Increased max-height to accommodate 60+ topics.
-       This value should be larger than the height of your longest topic list. */
         max-height: 2000px;
       }
 
@@ -106,6 +102,7 @@
         display: block;
         transition: background-color 0.2s ease, padding-left 0.2s ease;
         border-bottom: 1px solid #e0e0e0;
+        font-family: "Hind Siliguri", sans-serif;
       }
 
       .dropdown-content a:last-child {
@@ -121,18 +118,17 @@
   </head>
   <body>
     <div class="subject-container" id="subject-menu">
-      <h1>কেমিস্ট্রি ২য় পত্র</h1>
-      <!-- The dropdown menu will be dynamically generated here -->
+      <h1>কেমিস্ট্রি ২য় পত্র</h1>
     </div>
 
     <script>
       const chaptersData = [
         {
           id: "ch1",
-          title: "অধ্যায়-১: পরিবেশ রসায়ন",
+          title: "অধ্যায়-১: পরিবেশ রসায়ন",
           topics: [
             {
-              title: "১.১ - বায়ুমন্ডলের গঠণ, ঘুর্নিঝড় ও জ্বলোচ্ছাস",
+              title: "১.১ - বায়ুমন্ডলের গঠণ, ঘুর্নিঝড় ও জ্বলোচ্ছাস",
               url: "https://medicalprostuti.github.io/o1/",
             },
             {
@@ -140,7 +136,7 @@
               url: "https://medicalprostuti.github.io/o2/",
             },
             {
-              title: "১.৩ - গ্যাসীয় সূত্র সমূহ",
+              title: "১.৩ - গ্যাসীয় সূত্র সমূহ",
               url: "https://medicalprostuti.github.io/o3/",
             },
             {
@@ -160,7 +156,7 @@
               url: "https://medicalprostuti.github.io/o7/",
             },
             {
-              title: "১.৮ - বায়ু দূষণ",
+              title: "১.৮ - বায়ু দূষণ",
               url: "https://medicalprostuti.github.io/o8/",
             },
             {
@@ -195,7 +191,7 @@
         },
         {
           id: "ch2",
-          title: "অধ্যায়-২: জৈব যৌগ",
+          title: "অধ্যায়-২: জৈব যৌগ",
           topics: [
             {
               title: "২.১ - ভুমিকা ও কার্বনের বিশিষ্টতা",
@@ -210,7 +206,7 @@
               url: "https://medicalprostuti.github.io/o18/",
             },
             {
-              title: "২.৪ - সমগোত্রীয় শ্রেণী ও কার্যকরী মূলক",
+              title: "২.৪ - সমগোত্রীয় শ্রেণী ও কার্যকরী মূলক",
               url: "https://medicalprostuti.github.io/o19/",
             },
             {
@@ -226,7 +222,7 @@
               url: "https://medicalprostuti.github.io/o22/",
             },
             {
-              title: "২.৮ - জৈব যৌগের বিক্রিয়া কৌশল",
+              title: "২.৮ - জৈব যৌগের বিক্রিয়া কৌশল",
               url: "https://medicalprostuti.github.io/o23/",
             },
             {
@@ -258,7 +254,7 @@
               url: "https://medicalprostuti.github.io/o30/",
             },
             {
-              title: "২.১৬ - অ্যামিন ও ডায়াজোনিয়াম লবন",
+              title: "২.১৬ - অ্যামিন ও ডায়াজোনিয়াম লবন",
               url: "https://medicalprostuti.github.io/o31/",
             },
             {
@@ -290,7 +286,7 @@
               url: "https://medicalprostuti.github.io/o38/",
             },
             {
-              title: "২.২৪ - জৈব যৌগের বিশুদ্ধতা নির্নয়",
+              title: "২.২৪ - জৈব যৌগের বিশুদ্ধতা নির্নয়",
               url: "https://medicalprostuti.github.io/o39/",
             },
             {
@@ -309,10 +305,10 @@
         },
         {
           id: "ch3",
-          title: "অধ্যায়-৩: পরিমাণগত রসায়ন",
+          title: "অধ্যায়-৩: পরিমাণগত রসায়ন",
           topics: [
             {
-              title: "৩.১ - রাসায়নিক গণনা ও গ্যাসের মোলার আয়তন",
+              title: "৩.১ - রাসায়নিক গণনা ও গ্যাসের মোলার আয়তন",
               url: "https://medicalprostuti.github.io/o43/",
             },
             {
@@ -324,11 +320,11 @@
               url: "https://medicalprostuti.github.io/o45/",
             },
             {
-              title: "৩.৪ - জারন বিজারন বিক্রিয়া",
+              title: "৩.৪ - জারন বিজারন বিক্রিয়া",
               url: "https://medicalprostuti.github.io/o46/",
             },
             {
-              title: "৩.৫ - দ্রবণের ঘনমাত্রা নির্নয়ে বিয়ার্ট লিবার্টের সূত্র",
+              title: "৩.৫ - দ্রবণের ঘনমাত্রা নির্নয়ে বিয়ার্ট লিবার্টের সূত্র",
               url: "https://medicalprostuti.github.io/o47/",
             },
             {
@@ -344,36 +340,36 @@
 
         {
           id: "ch4",
-          title: "অধ্যায়-৪: তড়িৎ রসায়ন",
+          title: "অধ্যায়-৪: তড়িৎ রসায়ন",
           topics: [
             {
-              title: "৪.১ -তড়িৎ পরিবাহী ও এর প্রকারভেদ",
+              title: "৪.১ -তড়িৎ পরিবাহী ও এর প্রকারভেদ",
               url: "https://medicalprostuti.github.io/o50/",
             },
             {
-              title: "৪.২ - তড়িৎ বিশ্লেষণ ও তড়িৎ বিশ্লেষ্যের পরিবাহিতা",
+              title: "৪.২ - তড়িৎ বিশ্লেষণ ও তড়িৎ বিশ্লেষ্যের পরিবাহিতা",
               url: "https://medicalprostuti.github.io/o51/",
             },
             {
-              title: "৪.৩ - ফ্যারাডের তড়িৎ বিশ্লেষণ সূত্র",
+              title: "৪.৩ - ফ্যারাডের তড়িৎ বিশ্লেষণ সূত্র",
               url: "https://medicalprostuti.github.io/o52/",
             },
             {
-              title: "৪.৪ - ধাতুর সক্রীয়তা সিরিজ ও তড়িৎ রাসায়নিক সিরিজ",
+              title: "৪.৪ - ধাতুর সক্রীয়তা সিরিজ ও তড়িৎ রাসায়নিক সিরিজ",
               url: "https://medicalprostuti.github.io/o53/",
             },
             {
               title:
-                "৪.৫ - তড়িৎদ্বার বিভব, কোষ বিভব ও জারন-বিজারন অর্ধবিক্রিয়া",
+                "৪.৫ - তড়িৎদ্বার বিভব, কোষ বিভব ও জারন-বিজারন অর্ধবিক্রিয়া",
               url: "https://medicalprostuti.github.io/o54/",
             },
             {
-              title: "৪.৬ - তড়িৎদ্বার ও অর্ধকোষ",
+              title: "৪.৬ - তড়িৎদ্বার ও অর্ধকোষ",
               url: "https://medicalprostuti.github.io/o55/",
             },
 
             {
-              title: "৪.৭ - তড়িৎ কোষ",
+              title: "৪.৭ - তড়িৎ কোষ",
               url: "https://medicalprostuti.github.io/o56/",
             },
             {
@@ -381,7 +377,7 @@
               url: "https://medicalprostuti.github.io/o57/",
             },
             {
-              title: "৪.৯ - ফুয়েল সেল ও এর প্রকারভেদ",
+              title: "৪.৯ - ফুয়েল সেল ও এর প্রকারভেদ",
               url: "https://medicalprostuti.github.io/o58/",
             },
             {
@@ -393,7 +389,7 @@
 
         {
           id: "ch5",
-          title: "অধ্যায়-৫: অর্থনৈতিক রসায়ন",
+          title: "অধ্যায়-৫: অর্থনৈতিক রসায়ন",
           topics: [
             {
               title: "৫.১ - জ্বালানি সম্পদ ও প্রকারভেদ",
@@ -404,11 +400,11 @@
               url: "https://medicalprostuti.github.io/o61/",
             },
             {
-              title: "৫.৩ - বাংলাদেশের কয়লা শিল্প",
+              title: "৫.৩ - বাংলাদেশের কয়লা শিল্প",
               url: "https://medicalprostuti.github.io/o62/",
             },
             {
-              title: "৫.৪ -ইউরিয়া সার উৎপাদনের মূলনীতি",
+              title: "৫.৪ -ইউরিয়া সার উৎপাদনের মূলনীতি",
               url: "https://medicalprostuti.github.io/o63/",
             },
             {
@@ -428,7 +424,7 @@
               url: "https://medicalprostuti.github.io/o67/",
             },
             {
-              title: "৫.৯ - চামড়া টেনিং এর মূলনীতি",
+              title: "৫.৯ - চামড়া টেনিং এর মূলনীতি",
               url: "https://medicalprostuti.github.io/o68/",
             },
             {
@@ -445,31 +441,23 @@
             },
           ],
         },
-
-        // Add more chapters as needed
       ];
 
       document.addEventListener("DOMContentLoaded", function () {
         const menuContainer = document.getElementById("subject-menu");
 
-        // --- 1. Function to Generate the Menu ---
         function generateMenu() {
-          // Loop through each chapter in the data object
           chaptersData.forEach((chapter) => {
-            // Create the main container for the dropdown
             const dropdownDiv = document.createElement("div");
             dropdownDiv.className = "dropdown";
 
-            // Create the button for the chapter
             const button = document.createElement("button");
             button.className = "dropdown-btn";
             button.textContent = chapter.title;
 
-            // Create the container for the topics
             const contentDiv = document.createElement("div");
             contentDiv.className = "dropdown-content";
 
-            // Loop through the topics for the current chapter
             chapter.topics.forEach((topic) => {
               const link = document.createElement("a");
               link.textContent = topic.title;
@@ -477,16 +465,12 @@
               contentDiv.appendChild(link);
             });
 
-            // Assemble the parts
             dropdownDiv.appendChild(button);
             dropdownDiv.appendChild(contentDiv);
-
-            // Add the completed dropdown to the main container
             menuContainer.appendChild(dropdownDiv);
           });
         }
 
-        // --- 2. Function to Add Event Listeners ---
         function attachEventListeners() {
           const allDropdownBtns =
             menuContainer.querySelectorAll(".dropdown-btn");
@@ -494,18 +478,14 @@
           allDropdownBtns.forEach((btn) => {
             btn.addEventListener("click", function (event) {
               const currentContent = this.nextElementSibling;
-              const isAlreadyOpen = this.classList.contains("active");
-
-              // First, close all other dropdowns
+              
               allDropdownBtns.forEach((otherBtn) => {
                 if (otherBtn !== this) {
-                  // Don't close the one we are interacting with yet
                   otherBtn.classList.remove("active");
                   otherBtn.nextElementSibling.classList.remove("show");
                 }
               });
 
-              // Toggle the clicked dropdown
               this.classList.toggle("active");
               currentContent.classList.toggle("show");
 
@@ -513,9 +493,7 @@
             });
           });
 
-          // Optional: Close dropdowns if clicking outside
           window.addEventListener("click", function (event) {
-            // Check if the click was outside of any dropdown button
             if (!event.target.matches(".dropdown-btn")) {
               allDropdownBtns.forEach((btn) => {
                 btn.classList.remove("active");
@@ -525,7 +503,6 @@
           });
         }
 
-        // --- 3. Initialize the Menu ---
         generateMenu();
         attachEventListeners();
       });
